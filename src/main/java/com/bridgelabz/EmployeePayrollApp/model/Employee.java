@@ -6,8 +6,9 @@ import javax.persistence.Id;
 
 @Entity
 public class Employee {
-    public long employee_id, salary;
+    public long employee_id;
     public String employee_name, department, gender;
+    public long salary;
 
     @Id
     @GeneratedValue
