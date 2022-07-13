@@ -254,3 +254,6 @@
 2022-14-07 02:39:31[INFO][restartedMain][o.s.b.d.a.OptionalLiveReloadServer:58] LiveReload server is running on port 35729
 2022-14-07 02:39:31[INFO][restartedMain][o.s.b.w.e.t.TomcatWebServer:220] Tomcat started on port(s): 8080 (http) with context path ''
 2022-14-07 02:39:31[INFO][restartedMain][c.b.E.EmployeePayrollAppApplication:61] Started EmployeePayrollAppApplication in 3.404 seconds (JVM running for 4.035)
+2022-14-07 02:40:29[INFO][http-nio-8080-exec-3][o.a.c.c.C.[.[.[/]:173] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-14-07 02:40:29[INFO][http-nio-8080-exec-3][o.s.w.s.DispatcherServlet:525] Initializing Servlet 'dispatcherServlet'
+2022-14-07 02:40:29[INFO][http-nio-8080-exec-3][o.s.w.s.DispatcherServlet:547] Completed initialization in 0 ms
