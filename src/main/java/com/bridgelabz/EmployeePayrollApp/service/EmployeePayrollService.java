@@ -11,6 +11,7 @@ import java.util.List;
 
 @Service
 public class EmployeePayrollService implements IEmployeeService {
+    private List<Employee> employeeList = new ArrayList<>();
     @Autowired
     private EmployeeRepository repository;
 //    @Override
@@ -19,28 +20,30 @@ public class EmployeePayrollService implements IEmployeeService {
 //    }
     @Override
     public Employee addEmployee(EmployeePayrollDTO empPayrollDTO) {
-        Employee employee = new Employee(1, empPayrollDTO);
+        Employee employee = new Employee(employeeList.size()+1, empPayrollDTO);
+        employeeList.add(employee);
         return employee;
     }
     @Override
-    public Employee getEmployeeById(Long id) {
-        Employee employee = new Employee(1, new EmployeePayrollDTO("Jhanvi", "engineering", "female", 30000));
-        return employee;
+    public Employee getEmployeeById(int id) {
+        return employeeList.get(id-1);
     }
     @Override
     public List<Employee> getEmployees() {
-        List<Employee> employeeList = new ArrayList<>();
-        employeeList.add(new Employee(1, new EmployeePayrollDTO("Jhanvi", "engineering", "female", 30000)));
         return employeeList;
     }
     @Override
-    public Employee editEmployee(EmployeePayrollDTO empPayrollDTO) {
-        Employee employee = new Employee(1, empPayrollDTO);
+    public Employee editEmployee(int id, EmployeePayrollDTO empPayrollDTO) {
+        Employee employee = this.getEmployeeById(id);
+        employee.setName(empPayrollDTO.name);
+        employee.setDepartment(empPayrollDTO.department);
+        employee.setGender(empPayrollDTO.gender);
+        employee.setSalary(empPayrollDTO.salary);
+        employeeList.set(id-1, employee);
         return employee;
     }
     @Override
-    public void deleteEmployee(Long id) {
-//        repository.deleteById(id);
-//        return "Data deleted!";
+    public void deleteEmployee(int id) {
+        employeeList.remove(id-1);
     }
 }

@@ -9,8 +9,8 @@ public interface IEmployeeService {
 //    public String helloMessage();
 
     Employee addEmployee(EmployeePayrollDTO empPayrollDTO);
-    Employee getEmployeeById(Long id);
+    Employee getEmployeeById(int id);
     List<Employee> getEmployees();
-    Employee editEmployee(EmployeePayrollDTO empPayrollDTO);
-    void deleteEmployee(Long id);
+    Employee editEmployee(int id, EmployeePayrollDTO empPayrollDTO);
+    void deleteEmployee(int id);
 }

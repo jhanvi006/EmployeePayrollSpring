@@ -8,12 +8,12 @@ import javax.persistence.Id;
 
 @Entity
 public class Employee {
-    private long employee_id;
+    private int employee_id;
     private String name, department, gender;
     private long salary;
 
     public Employee(){}
-    public Employee(long id, EmployeePayrollDTO employeePayrollDTO){
+    public Employee(int id, EmployeePayrollDTO employeePayrollDTO){
         this.employee_id=id;
         this.name=employeePayrollDTO.name;
         this.department=employeePayrollDTO.department;
@@ -27,7 +27,7 @@ public class Employee {
         return employee_id;
     }
 
-    public void setEmployee_id(long employee_id) {
+    public void setEmployee_id(int employee_id) {
         this.employee_id = employee_id;
     }
 

@@ -18,7 +18,7 @@ public class EmployeeController {
     @Autowired
     private EmployeePayrollService employeePayrollService;
 
-    @GetMapping(value = {"", "/", "/home"})
+    @GetMapping(value = {"", "/", "/getEmployee"})
     public ResponseEntity<ResponseDTO> getEmployeeData(){
         List<Employee> employeeList = null;
         employeeList = employeePayrollService.getEmployees();
@@ -32,7 +32,7 @@ public class EmployeeController {
         return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
     }
     @GetMapping("/getEmployee/{id}")
-    public ResponseEntity<ResponseDTO> getEmployeeById(@PathVariable Long id){
+    public ResponseEntity<ResponseDTO> getEmployeeById(@PathVariable int id){
         Employee employee = employeePayrollService.getEmployeeById(id);
         ResponseDTO responseDTO = new ResponseDTO("Get call for id successful", employee);
         return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
@@ -41,14 +41,14 @@ public class EmployeeController {
 //    public List<Employee> displayAllEmployees() {
 //        return employeePayrollService.getEmployees();
 //    }
-    @PutMapping("/editEmployee")
-    public ResponseEntity<ResponseDTO> editEmployee(@RequestBody EmployeePayrollDTO empPayrollDTO){
-        Employee employee = employeePayrollService.editEmployee(empPayrollDTO);
+    @PutMapping("/editEmployee/{id}")
+    public ResponseEntity<ResponseDTO> editEmployee(@PathVariable int id, @RequestBody EmployeePayrollDTO empPayrollDTO){
+        Employee employee = employeePayrollService.editEmployee(id, empPayrollDTO);
         ResponseDTO responseDTO = new ResponseDTO("Updated Employee Payroll data successfully", employee);
         return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
     }
     @DeleteMapping("/deleteEmployee/{id}")
-    public ResponseEntity<ResponseDTO> deleteEmployee(@PathVariable Long id){
+    public ResponseEntity<ResponseDTO> deleteEmployee(@PathVariable int id){
         employeePayrollService.deleteEmployee(id);
         ResponseDTO responseDTO = new ResponseDTO("Deleted Successfully", "Deleted id: "+id);
         return new ResponseEntity<>(responseDTO, HttpStatus.OK);
