@@ -1,15 +1,16 @@
 package com.bridgelabz.EmployeePayrollApp.service;
 
+import com.bridgelabz.EmployeePayrollApp.dto.EmployeePayrollDTO;
 import com.bridgelabz.EmployeePayrollApp.model.Employee;
 
 import java.util.List;
 
 public interface IEmployeeService {
-    public String helloMessage();
+//    public String helloMessage();
 
-    Employee addEmployee(Employee employee);
-    Employee getGreetingById(Long id);
+    Employee addEmployee(EmployeePayrollDTO empPayrollDTO);
+    Employee getEmployeeById(Long id);
     List<Employee> getEmployees();
-    Employee editEmployee(Employee employee, Long emp_id);
-    String deleteEmployee(Long id);
+    Employee editEmployee(EmployeePayrollDTO empPayrollDTO);
+    void deleteEmployee(Long id);
 }
