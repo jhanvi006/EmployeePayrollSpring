@@ -11,5 +11,5 @@ public interface IEmployeeService {
     Employee getGreetingById(Long id);
     List<Employee> getEmployees();
     Employee editEmployee(Employee employee, Long emp_id);
-    void deleteEmployee(Long id);
+    String deleteEmployee(Long id);
 }

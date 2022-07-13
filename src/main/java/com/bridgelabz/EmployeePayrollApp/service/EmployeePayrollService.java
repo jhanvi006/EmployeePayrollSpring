@@ -31,7 +31,7 @@ public class EmployeePayrollService implements IEmployeeService {
     public Employee editEmployee(Employee employee, Long emp_id) {
         Employee existingEmp = repository.findById(emp_id).orElse(null);
         if (existingEmp != null) {
-            existingEmp.setEmployee_name(employee.getEmployee_name());
+            existingEmp.setName(employee.getName());
             existingEmp.setDepartment(employee.getDepartment());
             existingEmp.setGender(employee.getGender());
             existingEmp.setSalary(employee.getSalary());
@@ -39,7 +39,8 @@ public class EmployeePayrollService implements IEmployeeService {
         }else return null;
     }
     @Override
-    public void deleteEmployee(Long id) {
+    public String deleteEmployee(Long id) {
         repository.deleteById(id);
+        return "Data deleted!";
     }
 }
