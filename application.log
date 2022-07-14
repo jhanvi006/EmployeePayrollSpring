@@ -809,3 +809,10 @@ java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0
 2022-14-07 22:59:43[WARN][restartedMain][o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration:219] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
 2022-14-07 22:59:43[INFO][restartedMain][c.b.E.EmployeePayrollAppApplication:61] Started EmployeePayrollAppApplication in 3.24 seconds (JVM running for 3.861)
 2022-14-07 22:59:43[INFO][restartedMain][c.b.E.EmployeePayrollAppApplication:12] Welcome to Employee Payroll App.
+2022-14-07 23:12:58[INFO][restartedMain][c.b.E.EmployeePayrollAppApplication:55] Starting EmployeePayrollAppApplication using Java 18.0.1.1 on LAPTOP-RR74P28L with PID 20068 (C:\Users\Admin\Documents\BridgelabzCFP\EmployeePayrollApp\target\classes started by root in C:\Users\Admin\Documents\BridgelabzCFP\EmployeePayrollApp)
+2022-14-07 23:12:58[DEBUG][restartedMain][c.b.E.EmployeePayrollAppApplication:56] Running with Spring Boot v2.7.1, Spring v5.3.21
+2022-14-07 23:12:58[INFO][restartedMain][c.b.E.EmployeePayrollAppApplication:640] The following 1 profile is active: "dev"
+2022-14-07 23:13:01[WARN][restartedMain][o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration:219] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-14-07 23:13:01[INFO][restartedMain][c.b.E.EmployeePayrollAppApplication:61] Started EmployeePayrollAppApplication in 3.284 seconds (JVM running for 3.907)
+2022-14-07 23:13:01[INFO][restartedMain][c.b.E.EmployeePayrollAppApplication:14] Welcome to Employee Payroll App.
+2022-14-07 23:13:01[INFO][restartedMain][c.b.E.EmployeePayrollAppApplication:15] Employee Payroll App started in dev Environment
