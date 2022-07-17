@@ -38,16 +38,30 @@ public class EmployeePayrollService implements IEmployeeService {
     }
     @Override
     public Employee editEmployee(int id, EmployeePayrollDTO empPayrollDTO) {
-        Employee employee = this.getEmployeeById(id);
-        employee.setName(empPayrollDTO.name);
-        employee.setDepartment(empPayrollDTO.department);
-        employee.setGender(empPayrollDTO.gender);
-        employee.setSalary(empPayrollDTO.salary);
-        employeeList.set(id-1, employee);
-        return employee;
+        Employee searchEmployee = employeeList.stream()
+                .filter(empData -> empData.getEmployee_id() == id)
+                .findFirst().orElse(null);
+        if(searchEmployee != null) {
+            searchEmployee.setName(empPayrollDTO.name);
+            searchEmployee.setDepartment(empPayrollDTO.department);
+            searchEmployee.setGender(empPayrollDTO.gender);
+            searchEmployee.setSalary(empPayrollDTO.salary);
+            employeeList.set(id - 1, searchEmployee);
+            return searchEmployee;
+        }
+        else
+            throw new EmployeePayrollException("Employee with id "+id+" not found!");
     }
     @Override
-    public void deleteEmployee(int id) {
-        employeeList.remove(id-1);
+    public String deleteEmployee(int id) {
+        Employee searchEmployee = employeeList.stream()
+                .filter(empData -> empData.getEmployee_id() == id)
+                .findFirst().orElse(null);
+        if(searchEmployee != null) {
+            employeeList.remove(searchEmployee);
+            return "Employee with id "+id+" deleted successfully.";
+        }
+        else
+            throw new EmployeePayrollException("Employee with id "+id+" not found!");
     }
 }

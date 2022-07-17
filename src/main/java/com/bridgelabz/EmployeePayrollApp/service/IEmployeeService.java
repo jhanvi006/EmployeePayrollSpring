@@ -12,5 +12,5 @@ public interface IEmployeeService {
     Employee getEmployeeById(int id);
     List<Employee> getEmployees();
     Employee editEmployee(int id, EmployeePayrollDTO empPayrollDTO);
-    void deleteEmployee(int id);
+    String deleteEmployee(int id);
 }
