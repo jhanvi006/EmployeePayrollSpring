@@ -4,9 +4,14 @@ import com.bridgelabz.EmployeePayrollApp.dto.EmployeePayrollDTO;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.NotEmpty;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -14,16 +19,25 @@ import javax.persistence.Id;
 public class Employee {
     @Id
     @GeneratedValue
-    private int employee_id;
-    private String name, department, gender;
+    private int employeeId;
+    private String name;
     private long salary;
+    private String gender;
+    private LocalDate startDate;
+    private String note;
+    private String profilePic;
+    @ElementCollection
+    private List<String> department;
 
     public Employee(int id, EmployeePayrollDTO employeePayrollDTO){
-        this.employee_id=id;
+        this.employeeId=id;
         this.name=employeePayrollDTO.name;
-        this.department=employeePayrollDTO.department;
-        this.gender=employeePayrollDTO.gender;
         this.salary= employeePayrollDTO.salary;
+        this.gender=employeePayrollDTO.gender;
+        this.note=employeePayrollDTO.note;
+        this.startDate=employeePayrollDTO.startDate;
+        this.profilePic=employeePayrollDTO.profilePic;
+        this.department=employeePayrollDTO.department;
     }
 }
 

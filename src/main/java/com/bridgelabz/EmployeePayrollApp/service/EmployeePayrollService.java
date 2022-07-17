@@ -28,7 +28,7 @@ public class EmployeePayrollService implements IEmployeeService {
     @Override
     public Employee getEmployeeById(int id) {
         return employeeList.stream()
-                .filter(empData -> empData.getEmployee_id() == id)
+                .filter(empData -> empData.getEmployeeId() == id)
                 .findFirst()
                 .orElseThrow(() -> new EmployeePayrollException("Employee not found!"));
     }
@@ -39,7 +39,7 @@ public class EmployeePayrollService implements IEmployeeService {
     @Override
     public Employee editEmployee(int id, EmployeePayrollDTO empPayrollDTO) {
         Employee searchEmployee = employeeList.stream()
-                .filter(empData -> empData.getEmployee_id() == id)
+                .filter(empData -> empData.getEmployeeId() == id)
                 .findFirst().orElse(null);
         if(searchEmployee != null) {
             searchEmployee.setName(empPayrollDTO.name);
@@ -55,7 +55,7 @@ public class EmployeePayrollService implements IEmployeeService {
     @Override
     public String deleteEmployee(int id) {
         Employee searchEmployee = employeeList.stream()
-                .filter(empData -> empData.getEmployee_id() == id)
+                .filter(empData -> empData.getEmployeeId() == id)
                 .findFirst().orElse(null);
         if(searchEmployee != null) {
             employeeList.remove(searchEmployee);
