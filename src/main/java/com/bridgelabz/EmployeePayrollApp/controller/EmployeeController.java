@@ -5,6 +5,7 @@ import com.bridgelabz.EmployeePayrollApp.dto.ResponseDTO;
 import com.bridgelabz.EmployeePayrollApp.model.Employee;
 import com.bridgelabz.EmployeePayrollApp.service.EmployeePayrollService;
 import com.bridgelabz.EmployeePayrollApp.service.IEmployeeService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.RequestEntity;
@@ -16,6 +17,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/employee")
+@Slf4j
 public class EmployeeController {
     @Autowired
     private IEmployeeService employeePayrollService;
