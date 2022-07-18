@@ -3,12 +3,10 @@ package com.bridgelabz.EmployeePayrollApp.controller;
 import com.bridgelabz.EmployeePayrollApp.dto.EmployeePayrollDTO;
 import com.bridgelabz.EmployeePayrollApp.dto.ResponseDTO;
 import com.bridgelabz.EmployeePayrollApp.model.Employee;
-import com.bridgelabz.EmployeePayrollApp.service.EmployeePayrollService;
 import com.bridgelabz.EmployeePayrollApp.service.IEmployeeService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -54,7 +52,6 @@ public class EmployeeController {
     @DeleteMapping("/deleteEmployee/{id}")
     public ResponseEntity<ResponseDTO> deleteEmployee(@PathVariable int id){
         String message = employeePayrollService.deleteEmployee(id);
-//        ResponseDTO responseDTO = new ResponseDTO("Deleted Successfully", "Deleted id: "+id);
         ResponseDTO responseDTO = new ResponseDTO("Deleted Successfully", message);
         return new ResponseEntity<>(responseDTO, HttpStatus.OK);
     }

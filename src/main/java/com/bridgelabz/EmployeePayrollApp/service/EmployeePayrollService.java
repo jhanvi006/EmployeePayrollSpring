@@ -24,8 +24,9 @@ public class EmployeePayrollService implements IEmployeeService {
     @Override
     public Employee addEmployee(EmployeePayrollDTO empPayrollDTO) {
         Employee employee = new Employee(employeeList.size()+1, empPayrollDTO);
+        log.debug("emp data: "+ employee.toString());
         employeeList.add(employee);
-        return employee;
+        return repository.save(employee);
     }
     @Override
     public Employee getEmployeeById(int id) {

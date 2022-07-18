@@ -4,13 +4,8 @@ import com.bridgelabz.EmployeePayrollApp.dto.EmployeePayrollDTO;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.validation.constraints.NotEmpty;
+import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -19,6 +14,7 @@ import java.util.List;
 public class Employee {
     @Id
     @GeneratedValue
+    @Column(name = "employee_id")
     private int employeeId;
     private String name;
     private long salary;
@@ -27,6 +23,7 @@ public class Employee {
     private String note;
     private String profilePic;
     @ElementCollection
+    @CollectionTable(name = "employee_department", joinColumns = @JoinColumn(name = "id"))
     private List<String> department;
 
     public Employee(int id, EmployeePayrollDTO employeePayrollDTO){
