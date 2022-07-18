@@ -51,8 +51,8 @@ public class EmployeeController {
     }
     @DeleteMapping("/deleteEmployee/{id}")
     public ResponseEntity<ResponseDTO> deleteEmployee(@PathVariable int id){
-        String message = employeePayrollService.deleteEmployee(id);
-        ResponseDTO responseDTO = new ResponseDTO("Deleted Successfully", message);
+        employeePayrollService.deleteEmployee(id);
+        ResponseDTO responseDTO = new ResponseDTO("Deleted Successfully", "Deleted for id: "+id);
         return new ResponseEntity<>(responseDTO, HttpStatus.OK);
     }
 }

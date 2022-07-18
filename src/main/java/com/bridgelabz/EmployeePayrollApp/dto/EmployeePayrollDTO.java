@@ -22,7 +22,7 @@ public class EmployeePayrollDTO {
     public long salary;
     @NotBlank(message = "Note cannot be empty.")
     public String note;
-    @JsonFormat(pattern = "dd MM yyyy")
+    @JsonFormat(pattern = "dd MMM yyyy")
     @NotNull(message = "Start Date should not be empty")
     @PastOrPresent(message = "Start Date should be past or today's date.")
     public LocalDate startDate;

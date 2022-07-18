@@ -26,8 +26,10 @@ public class Employee {
     @CollectionTable(name = "employee_department", joinColumns = @JoinColumn(name = "id"))
     private List<String> department;
 
-    public Employee(int id, EmployeePayrollDTO employeePayrollDTO){
-        this.employeeId=id;
+    public Employee(EmployeePayrollDTO employeePayrollDTO){
+        this.updateData(employeePayrollDTO);
+    }
+    public void updateData(EmployeePayrollDTO employeePayrollDTO){
         this.name=employeePayrollDTO.name;
         this.salary= employeePayrollDTO.salary;
         this.gender=employeePayrollDTO.gender;

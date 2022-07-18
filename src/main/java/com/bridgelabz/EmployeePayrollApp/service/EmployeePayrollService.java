@@ -23,51 +23,28 @@ public class EmployeePayrollService implements IEmployeeService {
 //    }
     @Override
     public Employee addEmployee(EmployeePayrollDTO empPayrollDTO) {
-        Employee employee = new Employee(employeeList.size()+1, empPayrollDTO);
-        log.debug("emp data: "+ employee.toString());
-        employeeList.add(employee);
+        Employee employee = new Employee(empPayrollDTO);
+        log.debug("emp data: "+ employee);
         return repository.save(employee);
     }
     @Override
     public Employee getEmployeeById(int id) {
-        return employeeList.stream()
-                .filter(empData -> empData.getEmployeeId() == id)
-                .findFirst()
-                .orElseThrow(() -> new EmployeePayrollException("Employee not found!"));
+        return repository.findById(id)
+                .orElseThrow(() -> new EmployeePayrollException("Employee with id "+id+" not found!"));
     }
     @Override
     public List<Employee> getEmployees() {
-        return employeeList;
+        return repository.findAll();
     }
     @Override
     public Employee editEmployee(int id, EmployeePayrollDTO empPayrollDTO) {
-        Employee searchEmployee = employeeList.stream()
-                .filter(empData -> empData.getEmployeeId() == id)
-                .findFirst().orElse(null);
-        if(searchEmployee != null) {
-            searchEmployee.setName(empPayrollDTO.name);
-            searchEmployee.setDepartment(empPayrollDTO.department);
-            searchEmployee.setGender(empPayrollDTO.gender);
-            searchEmployee.setSalary(empPayrollDTO.salary);
-            searchEmployee.setNote(empPayrollDTO.note);
-            searchEmployee.setStartDate(empPayrollDTO.startDate);
-            searchEmployee.setProfilePic(empPayrollDTO.profilePic);
-            employeeList.set(id - 1, searchEmployee);
-            return searchEmployee;
-        }
-        else
-            throw new EmployeePayrollException("Employee with id "+id+" not found!");
+        Employee employee = this.getEmployeeById(id);
+        employee.updateData(empPayrollDTO);
+        return repository.save(employee);
     }
     @Override
-    public String deleteEmployee(int id) {
-        Employee searchEmployee = employeeList.stream()
-                .filter(empData -> empData.getEmployeeId() == id)
-                .findFirst().orElse(null);
-        if(searchEmployee != null) {
-            employeeList.remove(searchEmployee);
-            return "Employee with id "+id+" deleted successfully.";
-        }
-        else
-            throw new EmployeePayrollException("Employee with id "+id+" not found!");
+    public void deleteEmployee(int id) {
+        Employee employee = this.getEmployeeById(id);
+        repository.delete(employee);
     }
 }
