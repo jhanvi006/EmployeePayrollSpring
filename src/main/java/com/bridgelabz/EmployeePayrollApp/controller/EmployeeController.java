@@ -33,10 +33,16 @@ public class EmployeeController {
         ResponseDTO responseDTO = new ResponseDTO("Created Employee Payroll data successfully", employee);
         return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
     }
-    @GetMapping("/getEmployee/{id}")
+    @GetMapping("/getEmployeeById/{id}")
     public ResponseEntity<ResponseDTO> getEmployeeById(@PathVariable int id){
         Employee employee = employeePayrollService.getEmployeeById(id);
         ResponseDTO responseDTO = new ResponseDTO("Get call for id successful", employee);
+        return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
+    }
+    @GetMapping("/getEmployeeByDepartment/{department}")
+    public ResponseEntity<ResponseDTO> getEmployeeByDepartment(@PathVariable String department){
+        List<Employee> employee = employeePayrollService.getEmployeesByDepartment(department);
+        ResponseDTO responseDTO = new ResponseDTO("Get call for department successful", employee);
         return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
     }
 //    @GetMapping("/allEmployees")

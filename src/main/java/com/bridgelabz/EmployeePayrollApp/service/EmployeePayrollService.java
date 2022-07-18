@@ -37,6 +37,10 @@ public class EmployeePayrollService implements IEmployeeService {
         return repository.findAll();
     }
     @Override
+    public List<Employee> getEmployeesByDepartment(String department){
+        return repository.findEmployeesByDepartment(department);
+    }
+    @Override
     public Employee editEmployee(int id, EmployeePayrollDTO empPayrollDTO) {
         Employee employee = this.getEmployeeById(id);
         employee.updateData(empPayrollDTO);

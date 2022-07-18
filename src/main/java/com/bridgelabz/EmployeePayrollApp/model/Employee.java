@@ -1,6 +1,7 @@
 package com.bridgelabz.EmployeePayrollApp.model;
 
 import com.bridgelabz.EmployeePayrollApp.dto.EmployeePayrollDTO;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

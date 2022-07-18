@@ -10,6 +10,7 @@ public interface IEmployeeService {
 
     Employee addEmployee(EmployeePayrollDTO empPayrollDTO);
     Employee getEmployeeById(int id);
+    List<Employee> getEmployeesByDepartment(String department);
     List<Employee> getEmployees();
     Employee editEmployee(int id, EmployeePayrollDTO empPayrollDTO);
     void deleteEmployee(int id);
